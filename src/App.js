@@ -86,24 +86,31 @@ class App extends Component {
         >
           <Box align='center'>
             <Heading tag='h1' strong={true}>Data Cleaning</Heading>
-            <Heading tag='h3'>We divide into LendingClub's public database.</Heading>
+            <Heading tag='h3'>We dive into LendingClub's public database.</Heading>
           </Box>
           <Box full='horizontal'>
           <Tabs>
             <Tab title='Merging'>
-              <Box align='center' justify='center' direction='row' full='horizontal'>
-                <Paragraph>
-                  Prior to data cleaning, the data sets were merged to encompass a range of data from 2011-2017. To preserve the original copy of the data, twelve data sets were copied and then merged. To verify that the column names were identical in each data frame, the columns were counted and printed to visually see if they were matching. The combined datasets were stored into a new CSV file that would be referenced when data cleaning.
-                </Paragraph>
+              <Box align='start' justify='center' direction='row' full='horizontal'>
+                <Box pad='large'>
+                  <Paragraph>
+                    Prior to data cleaning, the data sets were merged to encompass a range of data from 2011-2017. To preserve the original copy of the data, twelve data sets were copied and then merged.
+                    To verify that the column names were identical in each data frame, the columns were counted and printed to visually see if they were matching. The combined datasets were stored into a new CSV file that would be referenced when data cleaning.
+                  </Paragraph>
+                </Box>
                 <Box pad='large'>
                   <AnnotatedMeter
                     legend={true}
                     size='medium'
                     type='bar'
-                    max={10000}
+                    max={1765451}
                     series={[
-                      {"label": "LoanStats_securev1_2016Q1", "value": 5000, "colorIndex": "graph-1"},
-                      {"label": "LoanStats_securev1_2016Q2", "value": 5000, "colorIndex": "graph-2"}
+                      {"label": "LoanStats_2007-2011", "value": 42538, "colorIndex": "neutral-1"},
+                      {"label": "LoanStats_2012-2013", "value": 188183, "colorIndex": "neutral-3"},
+                      {"label": "LoanStats_2014", "value": 235631, "colorIndex": "accent-2"},
+                      {"label": "LoanStats_2015", "value": 421097, "colorIndex": "graph-2"},
+                      {"label": "LoanStats_2016", "value": 434415, "colorIndex": "accent-1"},
+                      {"label": "LoanStats_2017", "value": 443587, "colorIndex": "graph-3"}
                     ]}
                   />
                 </Box>
