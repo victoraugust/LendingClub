@@ -31,6 +31,7 @@ import ListItem from 'grommet/components/ListItem';
 import Accordion from 'grommet/components/Accordion';
 import AccordionPanel from 'grommet/components/AccordionPanel';
 import DocumentPdfIcon from 'grommet/components/icons/base/DocumentPdf';
+import Notification from 'grommet/components/Notification';
 
 import './App.css';
 
@@ -44,6 +45,10 @@ class App extends Component {
   render() {
     return (
       <GrommetApp centered={false}>
+        <Notification
+          message='If you are seeing this message, please refresh your page multiple times, new site has been deployed.'
+          size='small'
+        />
         <Box
           full={true}
           justify='center'
