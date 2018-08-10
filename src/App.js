@@ -163,7 +163,7 @@ class App extends Component {
                   <AccordionPanel heading='Select the columns we need for the model and EDA'>
                     <Box direction='row' justify='center' align='center'>
                       <Paragraph>
-                        Every time when an investor purchases the notes from a loan, they will get a summary <Anchor icon={<DocumentPdfIcon size='small' />} href='/sample.pdf' /> of all the recorded information for that borrowers and the loan. We will only use these information for our model. We also include some helpful information, for example, "total_pymnt", for reference purpose.
+                        Every time when an investor purchases the notes from a loan, they will get a summary <Anchor icon={<DocumentPdfIcon size='small' />} href='./sample.pdf' /> of all the recorded information for that borrowers and the loan. We will only use these information for our model. We also include some helpful information, for example, "total_pymnt", for reference purpose.
                       </Paragraph>
                     </Box>
                   </AccordionPanel>
@@ -320,6 +320,24 @@ class App extends Component {
           </Box>
           <Box full='horizontal'>
             <Tabs>
+              <Tab title='Annual Income'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/grade_log_annual_income_loan_status.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Dti'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/dti_grade_loan_status.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
               <Tab title='Emp_Length'>
                 <Box align='center' direction='row' justify='center'>
                   <Image
@@ -335,52 +353,10 @@ class App extends Component {
                   />
                 </Box>
               </Tab>
-              <Tab title='Dti'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/dti_grade_loan_status.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
-                </Box>
-              </Tab>
               <Tab title='Fico'>
                 <Box align='center' direction='row' justify='center'>
                   <Image
                     src='/image/fico_grade_loan_status.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
-                </Box>
-              </Tab>
-              <Tab title='Payment Ratio'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/payment_ratio_charged_off.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
-                </Box>
-              </Tab>
-              <Tab title='Loan Purpose'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/loan_purpose_loan_status_before.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
-                  <LinkNextIcon size='large' />
-                  <Image
-                    src='/image/loan_purpose_loan_status_after.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
-                </Box>
-              </Tab>
-              <Tab title='Revol Util'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/grade_revol_util_loan_status.png'
                     size='large'
                     style={{width: '45vw'}}
                   />
@@ -401,15 +377,6 @@ class App extends Component {
                   />
                 </Box>
               </Tab>
-              <Tab title='Annual Income'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/grade_log_annual_income_loan_status.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
-                </Box>
-              </Tab>
               <Tab title='Interest Rate'>
                 <Box align='center' direction='row' justify='center'>
                   <Carousel autoplay={false} infinite={false} style={{width: '45vw'}}>
@@ -424,6 +391,39 @@ class App extends Component {
                   </Carousel>
                   <Image
                     src='/image/year_interest_rate_by_grade.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Loan Purpose'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/loan_purpose_loan_status_before.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                  <LinkNextIcon size='large' />
+                  <Image
+                    src='/image/loan_purpose_loan_status_after.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Payment Ratio'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/payment_ratio_charged_off.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Revol Util'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/grade_revol_util_loan_status.png'
                     size='large'
                     style={{width: '45vw'}}
                   />
