@@ -13,6 +13,7 @@ import AppsIcon from 'grommet/components/icons/base/Apps';
 import CloseIcon from 'grommet/components/icons/base/Close';
 import DownIcon from 'grommet/components/icons/base/Down';
 import NextIcon from 'grommet/components/icons/base/Next';
+import GrowIcon from 'grommet/components/icons/base/Grow';
 import BarChartIcon from 'grommet/components/icons/base/BarChart';
 import Animate from 'grommet/components/Animate';
 import Footer from 'grommet/components/Footer';
@@ -247,6 +248,51 @@ class App extends Component {
             <Heading tag='h3'>Our models.</Heading>
           </Box>
         </Section>
+
+        <Section
+          direction='row'
+          full={true}
+          colorIndex='neutral-1'
+          appCentered={true}
+          justify='center'
+          align='center'
+          wrap={true}
+        >
+          <Box pad='large'>
+            <GrowIcon size='huge' colorIndex='ok' />
+          </Box>
+          <Box align='start' pad='large'>
+            <Heading tag='h1' strong={true}>Final Result and thoughts</Heading>
+            <Heading tag='h3'>What we learned from this project.</Heading>
+          </Box>
+        </Section>
+
+        <Section
+          direction='row'
+          full={true}
+          colorIndex='grey-1'
+          appCentered={true}
+          justify='center'
+          align='center'
+          wrap={true}
+        >
+          <Box align='start' pad='large'>
+            <Heading tag='h1' strong={true}>About Discrimination</Heading>
+            <Heading tag='h3'>Why is Discrimination an issue?</Heading>
+            <Paragraph>
+              Although lenders now make good-faith determination in a borrower’s ability to afford a loan, lending discrimination hasn’t been eliminated. Lending discrimination occurs when a lender takes certain protected personal characteristics into account when denying a loan or imposing unfair terms on loans. Preliminary studies have shown that people of color pay higher interest rates than the people identifying themselves in the “white” community. In addition, young borrowers with lower education or women of color receive the highest rates. Although the federal Equal Credit Opportunity Act (ECOA) prohibits lenders from discriminating on the basis of race, religion, sex, age, lending discrimination still remains a challenge to be solved in the marketplace. In addition, unequal treatment of minorities regarding race, gender and age are not just motivated by racism but also lower creditworthiness or other economic disparities.
+            </Paragraph>
+            <Heading tag='h3'>Any Discrimination in Lending Club?</Heading>
+            <Paragraph>
+              Although Lending Club makes investors promise to not violate borrower discrimination laws, it is still an unfair practice.  Even with the limited demographic information, Lending Club provides the first three digits of the borrower’s zipcode which can reveal the geographic location to the investor. They can then make a guess of the distribution of various groups in that location which can give some probability of the borrower’s race. In addition, in 2009 Lending Club’s SEC filings provided investors with information about the borrower’s hometown, current location and a message that might have included phrases like “my husband” or “my wife” in which indirectly disclosed their gender and marital status.
+            </Paragraph>
+            <Heading tag='h3'>Future Work?</Heading>
+            <Paragraph>
+              Our modeling will not directly track discrimination practices by Lending Club, since the analysis is not based on declined loans or any information regarding the borrower’s race, age, or gender. Although Lending Club doesn’t reveal borrower’s race, age, or gender these attributes can be voluntarily reveal through the demographics. For future models, we can investigate locations based on the zip codes and look for potential discriminations by lenders. In addition, we can investigate decline loans and see if there is any connection between them and the locations from where they come from.
+            </Paragraph>
+          </Box>
+        </Section>
+
 
         <Button
           icon={this.state.showNav ? <CloseIcon /> : <AppsIcon />}
