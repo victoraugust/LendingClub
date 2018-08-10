@@ -37,12 +37,12 @@ class App extends Component {
     return (
       <GrommetApp centered={false}>
         <Box
-          appCentered={true}
           full={true}
           justify='center'
           align='center'
           wrap={true}
           colorIndex={this.state.showNav ? 'light-2' : 'light-1'}
+          pad='large'
         >
           <Heading strong={true} uppercase={true} align='center' margin='large'>
             Lending Club Final Project
@@ -58,12 +58,13 @@ class App extends Component {
 
         <Section
           direction='row'
-          full='horizontal'
+          full={true}
           colorIndex='neutral-1'
           justify='center'
           align='center'
           wrap={true}
-          style={{minHeight: '1100px'}}
+          style={{minHeight: '800px'}}
+          pad='large'
         >
           <Box align='start'>
             <Heading tag='h1' strong={true}>What is Lending Club?</Heading>
@@ -74,19 +75,20 @@ class App extends Component {
               The project goal is to create a service that helps investors make better decisions when choosing which Lending Club notes to invest in. Specifically, our model will predict whether individual notes offered by Lending Club will be fully paid or charged off by a classification algorithm with Loan Status as the response variable. It is important to predict what notes will be charged off or not to give investors useful insight into potential performance of individual notes and their overall portfolio. Currently investors have the option of relying on Lending Club grade and sub grade system to gauge whether a borrower will default. We want to make a service that the investors can use to predict which loans will be fully paid in particular sub grades. If our model is more predictive at selecting fully paid loans than a random draw, then it will be a valuable service for investors.
             </Paragraph>
           </Box>
-          <Box>
+          <Box pad='large'>
             <BarChartIcon size='huge' colorIndex='light-1' />
           </Box>
         </Section>
 
         <Section
           direction='column'
-          full='horizontal'
+          full={true}
           colorIndex='light-2'
           justify='center'
           align='center'
           wrap={true}
-          style={{minHeight: '1100px'}}
+          style={{minHeight: '800px'}}
+          pad='large'
         >
           <Box align='center'>
             <Heading tag='h1' strong={true}>Data Cleaning</Heading>
@@ -156,12 +158,13 @@ class App extends Component {
 
         <Section
           direction='column'
-          full='horizontal'
+          full={true}
           colorIndex='light-1'
           justify='center'
           align='center'
           wrap={true}
-          style={{minHeight: '1100px'}}
+          style={{minHeight: '800px'}}
+          pad='large'
         >
           <Box align='center'>
             <Heading tag='h1' strong={true}>Feature Engineering</Heading>
@@ -236,12 +239,13 @@ class App extends Component {
 
         <Section
           direction='column'
-          full='horizontal'
+          full={true}
           colorIndex='light-2'
           justify='center'
           align='center'
           wrap={true}
-          style={{minHeight: '1100px'}}
+          style={{minHeight: '800px'}}
+          pad='large'
         >
           <Box align='center'>
             <Heading tag='h1' strong={true}>Models</Heading>
@@ -251,12 +255,13 @@ class App extends Component {
 
         <Section
           direction='row'
-          full='horizontal'
+          full={true}
           colorIndex='neutral-1'
           justify='center'
           align='center'
           wrap={true}
-          style={{minHeight: '1100px'}}
+          style={{minHeight: '800px'}}
+          pad='large'
         >
           <Box>
             <GrowIcon size='huge' colorIndex='ok' />
@@ -269,12 +274,13 @@ class App extends Component {
 
         <Section
           direction='row'
-          full='horizontal'
+          full={true}
           colorIndex='grey-1'
           justify='center'
           align='center'
           wrap={true}
-          style={{minHeight: '1100px'}}
+          style={{minHeight: '1200px'}}
+          pad='large'
         >
           <Box align='start'>
             <Heading tag='h1' strong={true}>About Discrimination</Heading>
