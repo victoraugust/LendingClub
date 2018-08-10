@@ -12,6 +12,7 @@ import Button from 'grommet/components/Button';
 import AppsIcon from 'grommet/components/icons/base/Apps';
 import CloseIcon from 'grommet/components/icons/base/Close';
 import DownIcon from 'grommet/components/icons/base/Down';
+import NextIcon from 'grommet/components/icons/base/Next';
 import BarChartIcon from 'grommet/components/icons/base/BarChart';
 import Animate from 'grommet/components/Animate';
 import Footer from 'grommet/components/Footer';
@@ -20,6 +21,7 @@ import Section from 'grommet/components/Section';
 import Tabs from 'grommet/components/Tabs';
 import Tab from 'grommet/components/Tab';
 import AnnotatedMeter from 'grommet-addons/components/AnnotatedMeter';
+import Image from 'grommet/components/Image';
 
 import './App.css';
 
@@ -66,8 +68,9 @@ class App extends Component {
             <Heading tag='h1' strong={true}>What is Lending Club?</Heading>
             <Heading tag='h3'>And why we chose this project.</Heading>
             <Paragraph size='medium'>
-              Lending Club is the world’s leading online marketplace that allows borrowers and investors to connect. The platform uses technology to operate a credit marketplace at a lower cost than traditional bank loan programs. Lending Club brings borrowers and lenders together and acts as broker, performing such functions as screening borrowers, facilitating the transactions, and keeping track of loans during the loan lifetimes. Investors purchase Notes (which correspond to fractions of loans) with a goal of getting a return on investment from interest payments and principal repayment. Borrowers that apply to Lending Club typically take out loans to consolidate debt, improve their homes and finance major purchases. Lending Club’s mission is to transform the peer-to- peer loan industry to make it more transparent, efficient, and customer-friendly.
-              Lending Club has a large repository of data on past and current loans that we can use for our modeling. Each loan has a lot of factors that describe the borrower, such as his or her annual income, the purpose of the loan and the total number of credit lines opened by the borrower. Exploratory data analysis will help determine which factors are appropriate to be used for modeling.
+              Lending Club is the world’s leading online marketplace that allows borrowers and investors to connect. This platform uses technology to bring borrowers and lenders together and acts as broker, performing such functions as screening borrowers, facilitating the transactions, and keeping track of loans during the loan lifetimes. Investors purchase Notes (which correspond to fractions of loans) with a goal of getting a return on investment from interest payments and principal repayment. Borrowers that apply to Lending Club typically take out loans to consolidate debt, improve their homes and finance major purchases.
+
+              The project goal is to create a service that helps investors make better decisions when choosing which Lending Club notes to invest in. Specifically, our model will predict whether individual notes offered by Lending Club will be fully paid or charged off by a classification algorithm with Loan Status as the response variable. It is important to predict what notes will be charged off or not to give investors useful insight into potential performance of individual notes and their overall portfolio. Currently investors have the option of relying on Lending Club grade and sub grade system to gauge whether a borrower will default. We want to make a service that the investors can use to predict which loans will be fully paid in particular sub grades. If our model is more predictive at selecting fully paid loans than a random draw, then it will be a valuable service for investors.
             </Paragraph>
           </Box>
           <Box pad='large'>
@@ -89,7 +92,7 @@ class App extends Component {
             <Heading tag='h3'>We dive into LendingClub's public database.</Heading>
           </Box>
           <Box full='horizontal'>
-          <Tabs>
+            <Tabs>
             <Tab title='Merging'>
               <Box align='start' justify='center' direction='row' full='horizontal'>
                 <Box pad='large'>
@@ -153,7 +156,7 @@ class App extends Component {
         <Section
           direction='column'
           full={true}
-          colorIndex='grey-2'
+          colorIndex='light-1'
           appCentered={true}
           justify='center'
           align='center'
@@ -162,6 +165,86 @@ class App extends Component {
           <Box align='center'>
             <Heading tag='h1' strong={true}>Feature Engineering</Heading>
             <Heading tag='h3'>Prepare our data for modeling.</Heading>
+          </Box>
+          <Box full='horizontal'>
+            <Tabs>
+              <Tab title='Employment Length'>
+                <Box align='center' direction='row' justify='center' pad='large'>
+                  <Image
+                    src='/image/emp_length_loan_status_before.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                  <NextIcon size='large' />
+                  <Image
+                    src='/image/emp_length_loan_status_after.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Loan Purpose'>
+                <Box align='center' direction='row' justify='center' pad='large'>
+                  <Image
+                    src='/image/loan_purpose_loan_status_before.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                  <NextIcon size='large' />
+                  <Image
+                    src='/image/loan_purpose_loan_status_after.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Home Ownership'>
+                <Box align='center' direction='row' justify='center' pad='large'>
+                  <Image
+                    src='/image/home_ownership_loan_status_before.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                  <NextIcon size='large' />
+                  <Image
+                    src='/image/home_ownership_loan_status_after.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='States'>
+                <Box align='center' direction='row' justify='center' pad='large'>
+                  <Image
+                    src='/image/states_loan_status_before.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                  <NextIcon size='large' />
+                  <Image
+                    src='/image/states_loan_status_after.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Others'></Tab>
+            </Tabs>
+          </Box>
+        </Section>
+
+        <Section
+          direction='column'
+          full={true}
+          colorIndex='light-2'
+          appCentered={true}
+          justify='center'
+          align='center'
+          wrap={true}
+        >
+          <Box align='center'>
+            <Heading tag='h1' strong={true}>Models</Heading>
+            <Heading tag='h3'>Our models.</Heading>
           </Box>
         </Section>
 
