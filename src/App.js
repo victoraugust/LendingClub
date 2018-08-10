@@ -474,6 +474,28 @@ class App extends Component {
             <Heading tag='h1' strong={true}>Models</Heading>
             <Heading tag='h3'>Our models.</Heading>
           </Box>
+          <Box full='horizontal'>
+            <Tabs>
+              <Tab title='Compare'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/predicted_actual_proportion_fully.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                  <Image
+                    src='/image/precision_fully.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='ROC'>
+              </Tab>
+              <Tab title='Feature Importance'>
+              </Tab>
+            </Tabs>
+          </Box>
         </Section>
 
         <Section
