@@ -12,7 +12,8 @@ import Button from 'grommet/components/Button';
 import AppsIcon from 'grommet/components/icons/base/Apps';
 import CloseIcon from 'grommet/components/icons/base/Close';
 import DownIcon from 'grommet/components/icons/base/Down';
-import NextIcon from 'grommet/components/icons/base/Next';
+import LinkNextIcon from 'grommet/components/icons/base/LinkNext';
+import AddIcon from 'grommet/components/icons/base/Add';
 import GrowIcon from 'grommet/components/icons/base/Grow';
 import BarChartIcon from 'grommet/components/icons/base/BarChart';
 import Animate from 'grommet/components/Animate';
@@ -187,7 +188,7 @@ class App extends Component {
                     size='large'
                     style={{width: '45vw'}}
                   />
-                  <NextIcon size='large' />
+                  <LinkNextIcon size='large' />
                   <Image
                     src='/image/emp_length_loan_status_after.png'
                     size='large'
@@ -229,7 +230,7 @@ class App extends Component {
                     size='large'
                     style={{width: '45vw'}}
                   />
-                  <NextIcon size='large' />
+                  <LinkNextIcon size='large' />
                   <Image
                     src='/image/loan_purpose_loan_status_after.png'
                     size='large'
@@ -253,7 +254,7 @@ class App extends Component {
                     size='large'
                     style={{width: '45vw'}}
                   />
-                  <NextIcon size='large' />
+                  <LinkNextIcon size='large' />
                   <Image
                     src='/image/home_ownership_loan_status_after.png'
                     size='large'
@@ -277,6 +278,12 @@ class App extends Component {
                     size='large'
                     style={{width: '45vw'}}
                   />
+                  <AddIcon size='large' />
+                  <Image
+                    src='/image/year_interest_rate_by_grade.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
                 </Box>
               </Tab>
               <Tab title='States'>
@@ -286,7 +293,7 @@ class App extends Component {
                     size='large'
                     style={{width: '45vw'}}
                   />
-                  <NextIcon size='large' />
+                  <LinkNextIcon size='large' />
                   <Image
                     src='/image/states_loan_status_after.png'
                     size='large'
