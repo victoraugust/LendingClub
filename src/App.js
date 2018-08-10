@@ -152,7 +152,7 @@ class App extends Component {
                   <AccordionPanel heading='Select the columns we need for the model and EDA'>
                     <Box direction='row' justify='center' align='center'>
                       <Paragraph>
-                        Every time when an investor purchases the notes from a loan, they will get a summary <Anchor icon={<DocumentPdfIcon size='small' />} href='./sample.pdf' /> of all the recorded information for that borrowers and the loan. We will only use these information for our model. We also include some helpful information, for example, "total_pymnt", for reference purpose.
+                        Every time when an investor purchases the notes from a loan, they will get a summary <Anchor icon={<DocumentPdfIcon size='small' />} href='./sample.pdf' target='_blank' /> of all the recorded information for that borrowers and the loan. We will only use these information for our model. We also include some helpful information, for example, "total_pymnt", for reference purpose.
                       </Paragraph>
                     </Box>
                   </AccordionPanel>
@@ -208,10 +208,15 @@ class App extends Component {
                     </Box>
                   </AccordionPanel>
                   <AccordionPanel heading='Employment Title'>
-                    <Box justify='center' align='center'>
+                    <Box justify='center' align='center' direction='row'>
                       <Paragraph>
                         Column `title` contain way too many types of titles. Almost each loan has a unique title. We can't use it for modeling. However, we later attempted to extract the most common words appeared in column title. More details can be found in feature engineering.
                       </Paragraph>
+                      <Image
+                        src='/image/emp_title.png'
+                        size='large'
+                        style={{width: '45vw'}}
+                      />
                     </Box>
                   </AccordionPanel>
                   <AccordionPanel heading='open_rv_12m and open_rv_24m'>
@@ -337,6 +342,15 @@ class App extends Component {
                   <LinkNextIcon size='large' />
                   <Image
                     src='/image/emp_length_loan_status_after.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Emp_Title'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/emp_title.png'
                     size='large'
                     style={{width: '45vw'}}
                   />
