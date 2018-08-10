@@ -43,7 +43,7 @@ class App extends Component {
           align='center'
           wrap={true}
           colorIndex={this.state.showNav ? 'light-2' : 'light-1'}
-          >
+        >
           <Heading strong={true} uppercase={true} align='center' margin='large'>
             Lending Club Final Project
           </Heading>
@@ -58,14 +58,14 @@ class App extends Component {
 
         <Section
           direction='row'
-          full={true}
+          full='horizontal'
           colorIndex='neutral-1'
-          appCentered={true}
           justify='center'
           align='center'
           wrap={true}
-          >
-          <Box align='start' pad='large'>
+          style={{minHeight: '1100px'}}
+        >
+          <Box align='start'>
             <Heading tag='h1' strong={true}>What is Lending Club?</Heading>
             <Heading tag='h3'>And why we chose this project.</Heading>
             <Paragraph size='medium'>
@@ -74,19 +74,19 @@ class App extends Component {
               The project goal is to create a service that helps investors make better decisions when choosing which Lending Club notes to invest in. Specifically, our model will predict whether individual notes offered by Lending Club will be fully paid or charged off by a classification algorithm with Loan Status as the response variable. It is important to predict what notes will be charged off or not to give investors useful insight into potential performance of individual notes and their overall portfolio. Currently investors have the option of relying on Lending Club grade and sub grade system to gauge whether a borrower will default. We want to make a service that the investors can use to predict which loans will be fully paid in particular sub grades. If our model is more predictive at selecting fully paid loans than a random draw, then it will be a valuable service for investors.
             </Paragraph>
           </Box>
-          <Box pad='large'>
+          <Box>
             <BarChartIcon size='huge' colorIndex='light-1' />
           </Box>
         </Section>
 
         <Section
           direction='column'
-          full={true}
+          full='horizontal'
           colorIndex='light-2'
-          appCentered={true}
           justify='center'
           align='center'
           wrap={true}
+          style={{minHeight: '1100px'}}
         >
           <Box align='center'>
             <Heading tag='h1' strong={true}>Data Cleaning</Heading>
@@ -96,13 +96,13 @@ class App extends Component {
             <Tabs>
             <Tab title='Merging'>
               <Box align='start' justify='center' direction='row' full='horizontal'>
-                <Box pad='large'>
+                <Box>
                   <Paragraph>
                     Prior to data cleaning, the data sets were merged to encompass a range of data from 2011-2017. To preserve the original copy of the data, twelve data sets were copied and then merged.
                     To verify that the column names were identical in each data frame, the columns were counted and printed to visually see if they were matching. The combined datasets were stored into a new CSV file that would be referenced when data cleaning.
                   </Paragraph>
                 </Box>
-                <Box pad='large'>
+                <Box>
                   <AnnotatedMeter
                     legend={true}
                     size='medium'
@@ -156,12 +156,12 @@ class App extends Component {
 
         <Section
           direction='column'
-          full={true}
+          full='horizontal'
           colorIndex='light-1'
-          appCentered={true}
           justify='center'
           align='center'
           wrap={true}
+          style={{minHeight: '1100px'}}
         >
           <Box align='center'>
             <Heading tag='h1' strong={true}>Feature Engineering</Heading>
@@ -170,7 +170,7 @@ class App extends Component {
           <Box full='horizontal'>
             <Tabs>
               <Tab title='Employment Length'>
-                <Box align='center' direction='row' justify='center' pad='large'>
+                <Box align='center' direction='row' justify='center'>
                   <Image
                     src='/image/emp_length_loan_status_before.png'
                     size='large'
@@ -185,7 +185,7 @@ class App extends Component {
                 </Box>
               </Tab>
               <Tab title='Loan Purpose'>
-                <Box align='center' direction='row' justify='center' pad='large'>
+                <Box align='center' direction='row' justify='center'>
                   <Image
                     src='/image/loan_purpose_loan_status_before.png'
                     size='large'
@@ -200,7 +200,7 @@ class App extends Component {
                 </Box>
               </Tab>
               <Tab title='Home Ownership'>
-                <Box align='center' direction='row' justify='center' pad='large'>
+                <Box align='center' direction='row' justify='center'>
                   <Image
                     src='/image/home_ownership_loan_status_before.png'
                     size='large'
@@ -215,7 +215,7 @@ class App extends Component {
                 </Box>
               </Tab>
               <Tab title='States'>
-                <Box align='center' direction='row' justify='center' pad='large'>
+                <Box align='center' direction='row' justify='center'>
                   <Image
                     src='/image/states_loan_status_before.png'
                     size='large'
@@ -236,12 +236,12 @@ class App extends Component {
 
         <Section
           direction='column'
-          full={true}
+          full='horizontal'
           colorIndex='light-2'
-          appCentered={true}
           justify='center'
           align='center'
           wrap={true}
+          style={{minHeight: '1100px'}}
         >
           <Box align='center'>
             <Heading tag='h1' strong={true}>Models</Heading>
@@ -251,17 +251,17 @@ class App extends Component {
 
         <Section
           direction='row'
-          full={true}
+          full='horizontal'
           colorIndex='neutral-1'
-          appCentered={true}
           justify='center'
           align='center'
           wrap={true}
+          style={{minHeight: '1100px'}}
         >
-          <Box pad='large'>
+          <Box>
             <GrowIcon size='huge' colorIndex='ok' />
           </Box>
-          <Box align='start' pad='large'>
+          <Box align='start'>
             <Heading tag='h1' strong={true}>Final Result and thoughts</Heading>
             <Heading tag='h3'>What we learned from this project.</Heading>
           </Box>
@@ -269,14 +269,14 @@ class App extends Component {
 
         <Section
           direction='row'
-          full={true}
+          full='horizontal'
           colorIndex='grey-1'
-          appCentered={true}
           justify='center'
           align='center'
           wrap={true}
+          style={{minHeight: '1100px'}}
         >
-          <Box align='start' pad='large'>
+          <Box align='start'>
             <Heading tag='h1' strong={true}>About Discrimination</Heading>
             <Heading tag='h3'>Why is Discrimination an issue?</Heading>
             <Paragraph>
