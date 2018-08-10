@@ -175,12 +175,12 @@ class App extends Component {
           pad='large'
         >
           <Box align='center'>
-            <Heading tag='h1' strong={true}>Feature Engineering</Heading>
+            <Heading tag='h1' strong={true}>Exploratory Data Analysis</Heading>
             <Heading tag='h3'>Prepare our data for modeling.</Heading>
           </Box>
           <Box full='horizontal'>
             <Tabs>
-              <Tab title='Employment Length'>
+              <Tab title='Emp_Length'>
                 <Box align='center' direction='row' justify='center'>
                   <Image
                     src='/image/emp_length_loan_status_before.png'
@@ -190,6 +190,33 @@ class App extends Component {
                   <NextIcon size='large' />
                   <Image
                     src='/image/emp_length_loan_status_after.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Dti'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/dti_grade_loan_status.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Fico'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/fico_grade_loan_status.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Payment Ratio'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/payment_ratio_charged_off.png'
                     size='large'
                     style={{width: '45vw'}}
                   />
@@ -210,6 +237,15 @@ class App extends Component {
                   />
                 </Box>
               </Tab>
+              <Tab title='Revol Util'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/grade_revol_util_loan_status.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
               <Tab title='Home Ownership'>
                 <Box align='center' direction='row' justify='center'>
                   <Image
@@ -220,6 +256,24 @@ class App extends Component {
                   <NextIcon size='large' />
                   <Image
                     src='/image/home_ownership_loan_status_after.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Annual Income'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/grade_log_annual_income_loan_status.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
+              <Tab title='Interest Rate'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/sub_grade_interest_rate.png'
                     size='large'
                     style={{width: '45vw'}}
                   />
@@ -240,7 +294,15 @@ class App extends Component {
                   />
                 </Box>
               </Tab>
-              <Tab title='Others'></Tab>
+              <Tab title='Term'>
+                <Box align='center' direction='row' justify='center'>
+                  <Image
+                    src='/image/grade_loan_by_term.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+                </Box>
+              </Tab>
             </Tabs>
           </Box>
         </Section>
