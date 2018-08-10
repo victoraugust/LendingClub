@@ -25,6 +25,12 @@ import Tab from 'grommet/components/Tab';
 import AnnotatedMeter from 'grommet-addons/components/AnnotatedMeter';
 import Image from 'grommet/components/Image';
 import Markdown from 'grommet/components/Markdown';
+import Carousel from 'grommet/components/Carousel';
+import List from 'grommet/components/List';
+import ListItem from 'grommet/components/ListItem';
+import Accordion from 'grommet/components/Accordion';
+import AccordionPanel from 'grommet/components/AccordionPanel';
+import DocumentPdfIcon from 'grommet/components/icons/base/DocumentPdf';
 
 import './App.css';
 
@@ -84,12 +90,11 @@ class App extends Component {
 
         <Section
           direction='column'
-          full={true}
           colorIndex='light-2'
           justify='center'
           align='center'
           wrap={true}
-          style={{minHeight: '800px'}}
+          style={{minHeight: '1200px'}}
           pad='large'
         >
           <Box align='center'>
@@ -129,36 +134,170 @@ class App extends Component {
             </Tab>
             <Tab title='Formatting'>
               <Box align='center'>
-                <Paragraph>
-                  <Markdown content="In this part, we first convert the format of interest rate, `revol_utli` from percentage string to decimal. When reading the merged dataset CSV file, it was noticed that the interest rate was in percentage form (i.e.: `11.99%`). This format for the interest rate would potentially cause problems during EDA since the datatype was an object string type instead of a float. To convert these numbers into decimal values, the `%` sign was stripped and then the number was converted into a float and divided by `100`. Now the value would be `0.1199` as a datatype of a float value. Another column that mimicked a similar issue was the `revol_util`." />
-                </Paragraph>
-                <Paragraph>
-                  <Markdown content="`issue_d` contains the data of both month and year of the loans are issued. It works better as a datetime object. The issue year is extracted and stored in the new column `issue_year`. It can be a powerful predictor related to the economic condition at that period of time. Moreover, we are interested in the borrowers' length of credit history at the time when applied for the loan. `earliest_cr_line` records the earliest credit line at the time of application for the borrowers. This record by itself doesn't contribute to the model, but the length of credit history can be a good predictor for our model. It is calculated by subtracting `earliest_cr_line` from `issue_d`." />
-                </Paragraph>
+                <Label>What we have done in formatting:</Label>
+                <List>
+                  <ListItem justify='between' separator='horizontal'>
+                    <span>
+                      Convert int_rate from percentage string to decimal
+                    </span>
+                  </ListItem>
+                  <ListItem justify='between'>
+                    <span>
+                      Convert revol_util from the percentage string to decimal
+                    </span>
+                  </ListItem>
+                  <ListItem justify='between'>
+                    <span>
+                      Extract issue_mth and issue_year from issue_d
+                    </span>
+                  </ListItem>
+                  <ListItem>
+                    <span>Create a new column length_cr_hist using the earliest_cr_line and issue_d</span>
+                  </ListItem>
+                </List>
               </Box>
             </Tab>
             <Tab title='Variable Selection'>
               <Box align='center'>
-                <Paragraph>
-                  <Markdown content="Since our goal for this project is predicting whether a certain loan will end up **Charged Off** or **Fully Paid** and providing suggestions for the investors what loans they should invest in, we cannot use the variables that are not available for the investors when they are making investment decision. For example, we cannot use `last_fico_range_high` in our model because the Lending Club has kept updating the borrowers' current fico score in this column. The investors can only evaluate `fico_range_high`, the fico score of the borrowers at the time they applied for the loans. Hence, during the variable selection, we make sure that we have selected all the information that are available to the investors during investment decision making, the response variable, `loan_status`, and some potentially useful records, such as `total_pymnt`, `total_pymnt`, `total_rec_prncp`, and `total_rec_int`." />
-                </Paragraph>
-                <Paragraph>
-                  <Markdown content="When understating the what the values in each column represented, there were some columns that were recognized as non-adding information to the dataset. For example, `sec_app_fico_range_low` and `application_type` are two columns that were dropped since it did not add value as a predictor in the model. In addition, since the focus of the project is to analyze between fully-paid and charged-off, other unique variables in the `loan_status` were dropped to clean the data." />
-                </Paragraph>
+                <Accordion style={{width: '80vw'}}>
+                  <AccordionPanel heading='Select the columns we need for the model and EDA'>
+                    <Box direction='row' justify='center' align='center'>
+                      <Paragraph>
+                        Every time when an investor purchases the notes from a loan, they will get a summary <Anchor icon={<DocumentPdfIcon size='small' />} href='/sample.pdf' /> of all the recorded information for that borrowers and the loan. We will only use these information for our model. We also include some helpful information, for example, "total_pymnt", for reference purpose.
+                      </Paragraph>
+                    </Box>
+                  </AccordionPanel>
+                  <AccordionPanel heading='Loan_status: only keep the ones with fully-paid and charged-off'>
+                    <Box direction='row' align='center' justify='center'>
+                      <Image
+                        src='/image/loan_status_count.png'
+                        size='large'
+                        style={{width: '45vw'}}
+                      />
+                      <Paragraph>
+                        For modeling purposes, we only care about the loans that are either charge off or fully paid. Hence, we will remove the rows with other types of loan_status since we have no idea whether they will go defaults or not.
+                      </Paragraph>
+                    </Box>
+                  </AccordionPanel>
+                  <AccordionPanel heading='Remove the borrowers with second applicants'>
+                    <Box direction='row' justify='center' align='center'>
+                      <Box>
+                        <Paragraph>
+                          Only 0.879% of the application is joint application. With the present of the second applicants, the borrowers who have a low grade can get a fairly low interest rate. Having a second applicant or not is a game changer. It creates some "outliers-like” points in some of our EDA plots. In order to simplify the model, we will drop the rows who have second applicants.
+                        </Paragraph>
+                        <Paragraph>
+                          We use two ways of identifying the joint application. First, if the row doesn't have the sec_app_fico_range_low missing, it is an individual application. Second, if the application type is "Joint App", it is a joint application. We will drop whoever identify the more rows.
+                        </Paragraph>
+                      </Box>
+                    </Box>
+                  </AccordionPanel>
+                  <AccordionPanel heading='Drop the columns we no longer need'>
+                    <Box direction='row' justify='center' align='center'>
+                      <Paragraph>
+                        application_type and sec_app_fico_range_low were used to identify the loans with second applicants. Since the joint applications have been identified and removed, these two columns are no longer needed.
+                      </Paragraph>
+                    </Box>
+                  </AccordionPanel>
+                  <AccordionPanel heading='Final columns we have for df_sub'>
+                  </AccordionPanel>
+                </Accordion>
               </Box>
             </Tab>
             <Tab title='Missing Data'>
               <Box align='center'>
-                <Paragraph>
-                  <Markdown content="First of all, during data exploration, it is noticed that `25` rows have missing values for all the columns. We identify these rows by looking for the rows with their loan amount missing. Since these don’t provide any value to the model, they were dropped. Likewise, rows with `dti` (debt to income ratio) missing were removed since `dti` is a crucial predictor for the model. What's more, some columns have, such as `mths_since_last_major_derog` and `mths_since_last_delinq`, missing value at random. Our best guess is that they are missing because the borrowers don't have that record. Moreover, for some variables that have way too many categories, for example, title, we don't think it is necessary to deal with the missing value and simply drop the column. Moreover, for `emp_length`, we don't know the reason for missing. We decide to fill in the missing values by randomly sample the years based on the frequencies of the category. In addition, `revol_until` was investigated and filled in the missing values since it is a predictor in the model." />
-                </Paragraph>
-              </Box>
-            </Tab>
-            <Tab title='Outliers'>
-              <Box align='center'>
-                <Paragraph>
-                  <Markdown content="During the EDA, some outliers and strange data points were observed. After being investigated each of them the outliers were identified and removed to enhance the model. In addition, to simply the dataframe, for `verification_status` the 'Source Verified' and 'Verified' were combined to 'Verified'. Finially, `int_rate` equal to `0.06` was removed since it was an outlier in the model." />
-                </Paragraph>
+                <Accordion style={{width: '80vw'}}>
+                  <AccordionPanel heading='Check any missing values in dataframe'>
+                    <Box direction='row' justify='center' align='center'>
+                      <Image
+                        src='/image/missing_values.png'
+                        size='large'
+                        style={{width: '45vw'}}
+                        />
+                      <Paragraph>
+                        Before handling the missing value, we have 1006533 rows. Some columns have way too many missing values, such as mths_since_last_delinq, open_rv_12m and open_rv_24m.
+                      </Paragraph>
+                    </Box>
+                  </AccordionPanel>
+                  <AccordionPanel heading='Employment Title'>
+                    <Box justify='center' align='center'>
+                      <Paragraph>
+                        Column `title` contain way too many types of titles. Almost each loan has a unique title. We can't use it for modeling. However, we later attempted to extract the most common words appeared in column title. More details can be found in feature engineering.
+                      </Paragraph>
+                    </Box>
+                  </AccordionPanel>
+                  <AccordionPanel heading='open_rv_12m and open_rv_24m'>
+                    <Box direction='row' justify='center' align='center'>
+                      <Box>
+                        <Paragraph>
+                          open_rv_12m and open_rv_24m captures the number of revolving trades opened in past 12/24 months.
+                        </Paragraph>
+                        <Paragraph>
+                          They have 724459 missing values. Our best guess is that they are missing at random: these borrowers have zero revolving trades open in the past 12/24 mths. We fill the missing value with 0. We may not use these variables for the model since it has way too many missing values.
+                        </Paragraph>
+                      </Box>
+                    </Box>
+                  </AccordionPanel>
+                  <AccordionPanel heading='mths_since_last_major_derog and mths_since_last_delinq'>
+                    <Box justify='center' align='center'>
+                      <Paragraph>
+                        Similarly, we expect that mths_since_last_major_derog, mths_since_last_delinq and max_bal_bc have a huge number of missing value because the borrowers do not have that record. We may not use this variable as a predictor for the model. However, it is good to keep them for now for EDA purpose.
+                      </Paragraph>
+                    </Box>
+                  </AccordionPanel>
+                  <AccordionPanel heading='revol_until'>
+                    <Box justify='center' align='center'>
+                      <Paragraph>
+                        revol_util captures revolving line utilization rate, or the amount of credit the borrower is using relative to. We fill the missing value of revol_until with mean.
+                      </Paragraph>
+                    </Box>
+                  </AccordionPanel>
+                  <AccordionPanel heading='inq_last_6mths'>
+                    <Box justify='center' align='center'>
+                      <Paragraph>
+                        Column inq_last_6mths only contains 1 missing value, we filled it in with median value.
+                      </Paragraph>
+                      <Box direction='row' align='center'>
+                        <Image
+                          src='/image/inq_last_6mths.png'
+                          size='large'
+                          style={{width: '45vw'}}
+                        />
+                        <Paragraph>
+                          Inq_last_6mths has less observations as number of inquiries decreases. According to the plot, we may consider group the number of inquiries into two or three groups if we want to use it as a predictor.
+                        </Paragraph>
+                      </Box>
+                    </Box>
+                  </AccordionPanel>
+                  <AccordionPanel heading='emp_length'>
+                    <Box justify='center' align='center' direction='row'>
+                      <Paragraph>
+                        We don't know the reason that some emp_length is missing. It works the best to fill the NaN by randomly sample the years based on the frequencies of the category. After handling the missing values, the df_sub data frame has 1006533 observations. We didn’t drop a single row during the process of handling the missing value.
+                      </Paragraph>
+                      <Image
+                        src='/image/emp_length.png'
+                        size='large'
+                        style={{width: '45vw'}}
+                      />
+                    </Box>
+                  </AccordionPanel>
+                  <AccordionPanel heading='pub_rec_bankruptcies'>
+                    <Box align='center' justify='center' direction='row'>
+                      <Paragraph>
+                        pub_rec_bankruptcies has around 600 missing values. 0 is the most common value for pub_rec_bankruptcies, much higher than other categories. Hence, the missing values are filled with 0.
+                      </Paragraph>
+                      <Carousel autoplay={false} infinite={false} style={{width: '45vw'}}>
+                        <Image
+                          src='/image/counterplotpub_rec_bankruptciesBefore.png'
+                          size='large'
+                        />
+                        <Image
+                          src='/image/counterplotpub_rec_bankruptciesAfter.png'
+                          size='large'
+                        />
+                      </Carousel>
+                    </Box>
+                  </AccordionPanel>
+                </Accordion>
               </Box>
             </Tab>
           </Tabs>
@@ -273,12 +412,16 @@ class App extends Component {
               </Tab>
               <Tab title='Interest Rate'>
                 <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/sub_grade_interest_rate.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
-                  <AddIcon size='large' />
+                  <Carousel autoplay={false} infinite={false} style={{width: '45vw'}}>
+                    <Image
+                      src='/image/sub_grade_interest_rate_outliers.png'
+                      size='large'
+                    />
+                    <Image
+                      src='/image/sub_grade_interest_rate.png'
+                      size='large'
+                    />
+                  </Carousel>
                   <Image
                     src='/image/year_interest_rate_by_grade.png'
                     size='large'
