@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import GrommetApp from 'grommet/components/App';
 import Heading from 'grommet/components/Heading';
-import Header from 'grommet/components/Header';
-import Sidebar from 'grommet/components/Sidebar';
-import Title from 'grommet/components/Title';
 import Label from 'grommet/components/Label';
 import Box from 'grommet/components/Box';
-import Menu from 'grommet/components/Menu';
 import Anchor from 'grommet/components/Anchor';
-import Button from 'grommet/components/Button';
-import AppsIcon from 'grommet/components/icons/base/Apps';
-import CloseIcon from 'grommet/components/icons/base/Close';
 import DownIcon from 'grommet/components/icons/base/Down';
 import LinkNextIcon from 'grommet/components/icons/base/LinkNext';
-import AddIcon from 'grommet/components/icons/base/Add';
 import GrowIcon from 'grommet/components/icons/base/Grow';
 import BarChartIcon from 'grommet/components/icons/base/BarChart';
-import Animate from 'grommet/components/Animate';
 import Footer from 'grommet/components/Footer';
 import Paragraph from 'grommet/components/Paragraph';
 import Section from 'grommet/components/Section';
@@ -24,7 +15,6 @@ import Tabs from 'grommet/components/Tabs';
 import Tab from 'grommet/components/Tab';
 import AnnotatedMeter from 'grommet-addons/components/AnnotatedMeter';
 import Image from 'grommet/components/Image';
-import Markdown from 'grommet/components/Markdown';
 import Carousel from 'grommet/components/Carousel';
 import List from 'grommet/components/List';
 import ListItem from 'grommet/components/ListItem';
@@ -36,12 +26,6 @@ import Notification from 'grommet/components/Notification';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showNav: false
-    };
-  }
   render() {
     return (
       <GrommetApp centered={false}>
@@ -54,7 +38,7 @@ class App extends Component {
           justify='center'
           align='center'
           wrap={true}
-          colorIndex={this.state.showNav ? 'light-2' : 'light-1'}
+          colorIndex='light-1'
           pad='large'
         >
           <Heading strong={true} uppercase={true} align='center' margin='large'>
@@ -523,44 +507,6 @@ class App extends Component {
             </Paragraph>
           </Box>
         </Section>
-
-
-        <Button
-          icon={this.state.showNav ? <CloseIcon /> : <AppsIcon />}
-          onClick={() => this.setState({showNav: !this.state.showNav})}
-          style={{position: 'fixed', top: 0, left: 0, zIndex: 1000}}
-          />
-          <Animate
-            visible={this.state.showNav}
-            enter={{"animation": "slide-right", "duration": 300, "delay": 0}}
-            leave={{"animation": "slide-right", "duration": 300, "delay": 0}}
-            style={{position: 'fixed', top: 0, left: 0}}
-            >
-            <Sidebar colorIndex='light-1' fixed={true} full={true} size='large'>
-              <Header pad='large' justify='between'>
-                <Title>
-                  Lending Club Final Project
-                </Title>
-              </Header>
-              <Box flex='grow' justify='start'>
-                <Menu primary={true}>
-                  <Anchor href='#' className='active'>
-                    Introduction
-                  </Anchor>
-                  <Anchor href='#'>
-                    EDA
-                  </Anchor>
-                  <Anchor href='#'>
-                    Models
-                  </Anchor>
-                  <Anchor href='#'>
-                    Final Results
-                  </Anchor>
-                </Menu>
-              </Box>
-            </Sidebar>
-          </Animate>
-
       </GrommetApp>
     );
   }
