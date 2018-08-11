@@ -4,6 +4,8 @@ import Heading from 'grommet/components/Heading';
 import Label from 'grommet/components/Label';
 import Box from 'grommet/components/Box';
 import Anchor from 'grommet/components/Anchor';
+import Animate from 'grommet/components/Animate';
+import Button from 'grommet/components/Button';
 import DownIcon from 'grommet/components/icons/base/Down';
 import LinkNextIcon from 'grommet/components/icons/base/LinkNext';
 import GrowIcon from 'grommet/components/icons/base/Grow';
@@ -23,12 +25,22 @@ import AccordionPanel from 'grommet/components/AccordionPanel';
 import DocumentPdfIcon from 'grommet/components/icons/base/DocumentPdf';
 import Table from 'grommet/components/Table';
 import TableRow from 'grommet/components/TableRow';
+import FavoriteIcon from 'grommet/components/icons/base/Favorite';
+import GroupIcon from 'grommet/components/icons/base/Group';
+import Quote from 'grommet/components/Quote';
+
 
 import pdf from './sample.pdf';
 
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showPeople: false
+    };
+  }
   render() {
     return (
       <GrommetApp centered={false}>
@@ -45,6 +57,22 @@ class App extends Component {
           </Heading>
           <Label>Group 16</Label>
           <Footer justify='center' style={{ position: 'absolute', bottom: 0}}>
+            <Button
+          icon={<GroupIcon style={{position: 'absolute', bottom: 10, left: '10px', zIndex: 1000}}/>}
+          onClick={() => {this.setState({showPeople: !this.state.showPeople});}}
+          />
+            <Animate
+                visible={this.state.showPeople}
+                enter={{"animation": "fade", "duration": 1000, "delay": 0}}
+                       leave={{"animation": "fade", "duration": 1000, "delay": 0}}
+              style={{position: 'absolute', bottom: 10, left: '40px', zIndex: 1000}}
+                       keep={true}
+              >
+              <Paragraph style={{margin: 0}}>
+                    Made with <FavoriteIcon colorIndex='critical' size='xsmall' /> by Alexander Demidov, Yang Zeng, Mier Chen, Kopal Jain
+                  </Paragraph>
+              </Animate>
+
             <Box direction='column' align='center'>
               scroll down to start
               <DownIcon />
@@ -323,7 +351,6 @@ class App extends Component {
 
         <Section
           direction='column'
-          full={true}
           colorIndex='light-2'
           justify='center'
           align='center'
@@ -654,7 +681,6 @@ There are several avenues for future work to extend our project and to use the L
 
         <Section
           direction='row'
-          full={true}
           colorIndex='grey-1'
           justify='center'
           align='center'
