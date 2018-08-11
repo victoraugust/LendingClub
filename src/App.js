@@ -511,11 +511,18 @@ class App extends Component {
               <Tab title='Revol Util'>
                 <Box direction='column' justify='center' align='center'>
                   <Box align='center' direction='row' justify='center'>
-                    <Image
-                      src='/image/grade_revol_util_loan_status.png'
-                      size='large'
-                      style={{width: '45vw'}}
-                    />
+                    <Carousel autoplay={false} infinite={false} style={{width: '45vw'}}>
+                      <Image
+                        src='/image/grade_revol_util_loan_status.png'
+                        size='large'
+                        style={{width: '45vw'}}
+                      />
+                      <Image
+                        src='/image/grade_revol_util_loan_statusNoOutlier.png'
+                        size='large'
+                        style={{width: '45vw'}}
+                      />
+                    </Carousel>
                   </Box>
                   <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
                     Grade vs. Revolving Line Utilization Rate (Revol Util) plot for charged off and fully paid loans indicates how Revol Util (or the amount of credit the borrower is using relative to all available revolving credit) affects if a borrower’s loan will be charged off or fully paid. This plot further investigates a possible trend among grades (A to G). Although Grade A shows slightly less revol util than the rest of the grades, there is no significant difference between all the grades when it comes to revol util. However, there is much overlap between the percentile ranges between charged off loans and fully paid off, despite of what grade the borrower belongs in. Hence Revolving Line Utilization Rate by itself may not be as predictive on its own as we hypothesized for the model.
@@ -611,7 +618,17 @@ The ROC curve for our best model, AdaBoost_bal has the expected smooth shape. Th
                 </Box>
               </Tab>
               <Tab title='Feature Importance'>
-
+                <Box direction='row' align='center' justify='center'>
+                  <Image
+                    src='/image/importance_15.png'
+                    size='medium'
+                  />
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px', marginLeft: '30px'}}>
+                    The table left shows the top 15 feature importance for our AdaBoost_bal model as calculated via a data permutation algorithm implemented in sklearn. The five features found to be most important for predictive power were 1) monthly debt payments to monthly income (dti) 2) loan amount 3) annual income 4) credit history length 5) FICO score. Among the categorical variables the most important ones were term length and whether the borrower was a renter. It is interesting that credit history length turned out to be important. This is a feature that we derived from feature engineering, and our efforts appear to have paid off vis-a-vis better performance.
+                    <br/>
+                    We feel that it is a favorable development that our model found several features to have importance for making predictions, rather than just one or two. This indicates that the model may have discovered interesting interactions between features, which led to better predictions for our difficult dataset.
+                  </Paragraph>
+                </Box>
               </Tab>
             </Tabs>
           </Box>
