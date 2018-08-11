@@ -315,45 +315,65 @@ class App extends Component {
           <Box full='horizontal'>
             <Tabs>
               <Tab title='Annual Income'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/grade_log_annual_income_loan_status.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
+                <Box direction='column' justify='center' align='center'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Image
+                      src='/image/grade_log_annual_income_loan_status.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+                    Grade vs. Log Value of Annual Income plot for charged off and fully paid loans indicates how annual income affects if a borrower’s loan will be charged off or fully paid. This plot further investigates a possible trend among grades (A to G). Although Grade A shows slightly higher annual income than the rest of the grades, there is no significant difference between all the grades when it comes to annual income. However, borrowers with higher income will more likely pay the full loan while borrowers with lower income will most likely be charged off, despite of what grade the borrower belongs in. Hence annual income may have some predictive value in the model.
+                  </Paragraph>
                 </Box>
               </Tab>
               <Tab title='Dti'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/dti_grade_loan_status.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
+                <Box direction='column' justify='center' align='center'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Image
+                      src='/image/dti_grade_loan_status.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+                    Grade vs. Dti plot for charged off and fully paid loans indicates how dti (debt to income ratio) affects if a borrower’s loan will be charged off or fully paid. This plot further investigates a possible trend among grades (A to G). As the grade decreases from A to G, the amount of dti increases. In addition, borrowers with higher dti will more likely have a charged off loan while borrowers with lower dti will more likely have a fully paid loan, despite of what grade the borrower belongs in. Hence dti variable may have some predictive value in the model.
+                  </Paragraph>
                 </Box>
               </Tab>
               <Tab title='Emp_Length'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/emp_length_loan_status_before.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
-                  <LinkNextIcon size='large' />
-                  <Image
-                    src='/image/emp_length_loan_status_after.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
+                <Box direction='column' justify='center' align='center'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Image
+                      src='/image/emp_length_loan_status_before.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                    <LinkNextIcon size='large' />
+                    <Image
+                      src='/image/emp_length_loan_status_after.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+                    Employment Length vs. Number of Loans counter plot for charged off and fully paid loans indicates how employment duration affects if a borrower’s loan will be charged off or fully paid. Future engineering was conducted on original data to group employment length into larger categories of 0-1, 2-4, 5-9, and 10+  years. The plots show that there is significant amount of data under each category of employment group. In addition, most of the borrowers that participate in Lending Club have employment for over 10 years. Despite the employment length, there are more fully paid loans than charged of loans. Hence employment length may have some predictive value in the model.
+                  </Paragraph>
                 </Box>
               </Tab>
               <Tab title='Emp_Title'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/emp_title.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
+                <Box direction='column' justify='center' align='center'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Image
+                      src='/image/emp_title.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+                    Employment Title vs. Number of Loans counter plot for charged off and fully paid loans indicates how employment title affects if a borrower’s loan will be charged off or fully paid. This plot shows that there is data recorded under a diverse amount of employment title types. In addition, most of the borrowers that participate in Lending Club are employed as a manager or other professions than the ones listed in the x-axis. Despite the employment title, there are more fully paid loans than charged of loans. Hence employment title may have some predictive value in the model.
+                  </Paragraph>
                 </Box>
               </Tab>
               <Tab title='Fico'>
