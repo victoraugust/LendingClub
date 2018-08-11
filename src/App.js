@@ -22,6 +22,10 @@ import Accordion from 'grommet/components/Accordion';
 import AccordionPanel from 'grommet/components/AccordionPanel';
 import DocumentPdfIcon from 'grommet/components/icons/base/DocumentPdf';
 import Notification from 'grommet/components/Notification';
+import Table from 'grommet/components/Table';
+import TableRow from 'grommet/components/TableRow';
+
+import pdf from './sample.pdf';
 
 import './App.css';
 
@@ -88,6 +92,7 @@ class App extends Component {
         >
           <Box align='center'>
             <Heading tag='h1' strong={true}>Data Merging</Heading>
+            <Heading tag='h3'>Combine all the data we can use.</Heading>
             <Box align='start' justify='center' direction='row' full='horizontal'>
               <Box>
                 <Paragraph>
@@ -129,6 +134,7 @@ class App extends Component {
         >
           <Box align='center'>
             <Heading tag='h1' strong={true}>Data Formatting</Heading>
+            <Heading tag='h3'>Clean up the raw data.</Heading>
             <Box align='start' justify='center' direction='row' full='horizontal'>
               <Box align='center'>
                 <Label>What we have done in formatting:</Label>
@@ -168,12 +174,13 @@ class App extends Component {
         >
           <Box align='center'>
             <Heading tag='h1' strong={true}>Variable Selection</Heading>
+            <Heading tag='h3'>Choose which predictors to use in our models.</Heading>
             <Box full='horizontal'>
               <Tabs>
                 <Tab title='Initial Selection'>
                   <Box direction='row' justify='center' align='center'>
                     <Paragraph>
-                      Every time when an investor purchases the notes from a loan, they will get a summary <Anchor icon={<DocumentPdfIcon size='small' />} href='./sample.pdf' target='_blank' /> of all the recorded information for that borrowers and the loan. We will only use these information for our model. We also include some helpful information, for example, "total_pymnt", for reference purpose.
+                      Every time when an investor purchases the notes from a loan, they will get a summary <Anchor href={pdf} icon={<DocumentPdfIcon size='small' />}></Anchor> of all the recorded information for that borrowers and the loan. We will only use these information for our model. We also include some helpful information, for example, "total_pymnt", for reference purpose.
                     </Paragraph>
                   </Box>
                 </Tab>
@@ -226,7 +233,8 @@ class App extends Component {
           pad='large'
         >
           <Box align='center'>
-            <Heading tag='h1' strong={true}>Handle Missing Data</Heading>
+            <Heading tag='h1' strong={true}>Missing Data</Heading>
+            <Heading tag='h3'>We handle differently for different predictors.</Heading>
             <Box full='horizontal'>
               <Tabs>
                 <Tab title='Initial Check'>
@@ -253,7 +261,7 @@ class App extends Component {
                     />
                   </Box>
                 </Tab>
-                <Tab title='open_rv_12m, open_rv_24m'>
+                <Tab title='open_rv_X'>
                   <Box direction='row' justify='center' align='center'>
                     <Box>
                       <Paragraph>
@@ -265,7 +273,7 @@ class App extends Component {
                     </Box>
                   </Box>
                 </Tab>
-                <Tab title='mths_since_last_major_derog, mths_since_last_delinq'>
+                <Tab title='mths_since_last_X'>
                   <Box justify='center' align='center'>
                     <Paragraph>
                       Similarly, we expect that mths_since_last_major_derog, mths_since_last_delinq and max_bal_bc have a huge number of missing value because the borrowers do not have that record. We may not use this variable as a predictor for the model. However, it is good to keep them for now for EDA purpose.
@@ -409,27 +417,37 @@ class App extends Component {
                 </Box>
               </Tab>
               <Tab title='Fico'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/fico_grade_loan_status.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
+                <Box direction='column' justify='center' align='center'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Image
+                      src='/image/fico_grade_loan_status.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+                    Grade vs. FICO Range Low plot for charged off and fully paid loans indicates how FICO score affects if a borrower’s loan will be charged off or fully paid. This plot further investigates a possible trend among grades (A to G). As the grades decrease from A to G, the FICO scores also decreases. However, there is much overlap between the percentile ranges between charged off loans and fully paid off, despite of what grade the borrower belongs in. Hence FICO score by itself may not be as predictive on its own as we hypothesized for the model.
+                  </Paragraph>
                 </Box>
               </Tab>
               <Tab title='Home Ownership'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/home_ownership_loan_status_before.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
-                  <LinkNextIcon size='large' />
-                  <Image
-                    src='/image/home_ownership_loan_status_after.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
+                <Box direction='column' justify='center' align='center'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Image
+                      src='/image/home_ownership_loan_status_before.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                    <LinkNextIcon size='large' />
+                    <Image
+                      src='/image/home_ownership_loan_status_after.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+                    Home Ownership Counts vs. Number of Loans counter plot for charged off and fully paid loans indicates how home ownership affects if a borrower’s loan will be charged off or fully paid. Future engineering was conducted on original data to group home ownership into larger categories of mortgage, rent and own. This was done since rent”, “mortgage” and “own” have a significant number of observations while, “any”, “other” and “none” have only a few observations. Despite the type of home ownership, there are more fully paid loans than charged of loans. Hence home ownership may have some predictive value in the model.
+                  </Paragraph>
                 </Box>
               </Tab>
               <Tab title='Interest Rate'>
@@ -545,6 +563,32 @@ class App extends Component {
               <Tab title='ROC'>
               </Tab>
               <Tab title='Feature Importance'>
+                <Box direction='column' align='center' justify='center'>
+                  <Box>
+                    <Table scrollable={true}>
+                    <thead>
+                      <tr>
+                        <th>
+                          Feature
+                        </th>
+                        <th>
+                          Importance
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <TableRow>
+                        <td>
+                          Alan
+                        </td>
+                        <td className='secondary'>
+                          plays accordion
+                        </td>
+                      </TableRow>
+                    </tbody>
+                  </Table>
+                  </Box>
+                </Box>
               </Tab>
             </Tabs>
           </Box>
