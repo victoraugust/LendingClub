@@ -78,50 +78,58 @@ class App extends Component {
         </Section>
 
         <Section
-          direction='column'
+          direction='row'
           colorIndex='light-2'
           justify='center'
           align='center'
           wrap={true}
-          style={{minHeight: '1200px'}}
+          style={{minHeight: '800px'}}
           pad='large'
         >
           <Box align='center'>
-            <Heading tag='h1' strong={true}>Data Cleaning</Heading>
-            <Heading tag='h3'>We dive into LendingClub's public database.</Heading>
-          </Box>
-          <Box full='horizontal'>
-            <Tabs>
-            <Tab title='Merging'>
-              <Box align='start' justify='center' direction='row' full='horizontal'>
-                <Box>
-                  <Paragraph>
-                    Prior to data cleaning, the data sets were merged to encompass a range of data from 2011-2017. To preserve the original copy of the data, twelve data sets were copied and then merged.
-                    To verify that the column names were identical in each data frame, the columns were counted and printed to visually see if they were matching. The combined datasets were stored into a new CSV file that would be referenced when data cleaning.
-                  </Paragraph>
-                  <Paragraph>
-                    The importance of data merging is to ensure that maximized datasets are incorporated in our future engineering and models. By using data from a range of years, we are able extract variety of information throughout past history and hence have a better possibility of our models performing well when determining what loans could potentially be charged off.
-                  </Paragraph>
-                </Box>
-                <Box pad='medium'>
-                  <AnnotatedMeter
-                    legend={true}
-                    size='medium'
-                    type='bar'
-                    max={1765451}
-                    series={[
-                      {"label": "LoanStats_2007-2011", "value": 42538, "colorIndex": "neutral-1"},
-                      {"label": "LoanStats_2012-2013", "value": 188183, "colorIndex": "neutral-3"},
-                      {"label": "LoanStats_2014", "value": 235631, "colorIndex": "accent-2"},
-                      {"label": "LoanStats_2015", "value": 421097, "colorIndex": "graph-2"},
-                      {"label": "LoanStats_2016", "value": 434415, "colorIndex": "accent-1"},
-                      {"label": "LoanStats_2017", "value": 443587, "colorIndex": "graph-3"}
-                    ]}
-                  />
-                </Box>
+            <Heading tag='h1' strong={true}>Data Merging</Heading>
+            <Box align='start' justify='center' direction='row' full='horizontal'>
+              <Box>
+                <Paragraph>
+                  Prior to data cleaning, the data sets were merged to encompass a range of data from 2011-2017. To preserve the original copy of the data, twelve data sets were copied and then merged.
+                  To verify that the column names were identical in each data frame, the columns were counted and printed to visually see if they were matching. The combined datasets were stored into a new CSV file that would be referenced when data cleaning.
+                </Paragraph>
+                <Paragraph>
+                  The importance of data merging is to ensure that maximized datasets are incorporated in our future engineering and models. By using data from a range of years, we are able extract variety of information throughout past history and hence have a better possibility of our models performing well when determining what loans could potentially be charged off.
+                </Paragraph>
               </Box>
-            </Tab>
-            <Tab title='Formatting'>
+              <Box pad='medium'>
+                <AnnotatedMeter
+                  legend={true}
+                  size='medium'
+                  type='bar'
+                  max={1765451}
+                  series={[
+                    {"label": "LoanStats_2007-2011", "value": 42538, "colorIndex": "neutral-1"},
+                    {"label": "LoanStats_2012-2013", "value": 188183, "colorIndex": "neutral-3"},
+                    {"label": "LoanStats_2014", "value": 235631, "colorIndex": "accent-2"},
+                    {"label": "LoanStats_2015", "value": 421097, "colorIndex": "graph-2"},
+                    {"label": "LoanStats_2016", "value": 434415, "colorIndex": "accent-1"},
+                    {"label": "LoanStats_2017", "value": 443587, "colorIndex": "graph-3"}
+                  ]}
+                  />
+              </Box>
+            </Box>
+          </Box>
+        </Section>
+
+        <Section
+          direction='row'
+          colorIndex='light-1'
+          justify='center'
+          align='center'
+          wrap={true}
+          style={{minHeight: '800px'}}
+          pad='large'
+        >
+          <Box align='center'>
+            <Heading tag='h1' strong={true}>Data Formatting</Heading>
+            <Box align='start' justify='center' direction='row' full='horizontal'>
               <Box align='center'>
                 <Label>What we have done in formatting:</Label>
                 <List>
@@ -145,18 +153,33 @@ class App extends Component {
                   </ListItem>
                 </List>
               </Box>
-            </Tab>
-            <Tab title='Variable Selection'>
-              <Box align='center'>
-                <Accordion style={{width: '80vw'}}>
-                  <AccordionPanel heading='Select the columns we need for the model and EDA'>
-                    <Box direction='row' justify='center' align='center'>
-                      <Paragraph>
-                        Every time when an investor purchases the notes from a loan, they will get a summary <Anchor icon={<DocumentPdfIcon size='small' />} href='./sample.pdf' target='_blank' /> of all the recorded information for that borrowers and the loan. We will only use these information for our model. We also include some helpful information, for example, "total_pymnt", for reference purpose.
-                      </Paragraph>
-                    </Box>
-                  </AccordionPanel>
-                  <AccordionPanel heading='Loan_status: only keep the ones with fully-paid and charged-off'>
+            </Box>
+          </Box>
+        </Section>
+
+        <Section
+          direction='row'
+          colorIndex='light-2'
+          justify='center'
+          align='center'
+          wrap={true}
+          style={{minHeight: '800px'}}
+          pad='large'
+        >
+          <Box align='center'>
+            <Heading tag='h1' strong={true}>Variable Selection</Heading>
+            <Box full='horizontal'>
+              <Tabs>
+                <Tab title='Initial Selection'>
+                  <Box direction='row' justify='center' align='center'>
+                    <Paragraph>
+                      Every time when an investor purchases the notes from a loan, they will get a summary <Anchor icon={<DocumentPdfIcon size='small' />} href='./sample.pdf' target='_blank' /> of all the recorded information for that borrowers and the loan. We will only use these information for our model. We also include some helpful information, for example, "total_pymnt", for reference purpose.
+                    </Paragraph>
+                  </Box>
+                </Tab>
+                <Tab title='Loan Status'>
+                  <Box direction='column' align='center' justify='center'>
+                    <Label>Only keep the ones with fully-paid and charged-off</Label>
                     <Box direction='row' align='center' justify='center'>
                       <Image
                         src='/image/loan_status_count.png'
@@ -167,141 +190,150 @@ class App extends Component {
                         For modeling purposes, we only care about the loans that are either charge off or fully paid. Hence, we will remove the rows with other types of loan_status since we have no idea whether they will go defaults or not.
                       </Paragraph>
                     </Box>
-                  </AccordionPanel>
-                  <AccordionPanel heading='Remove the borrowers with second applicants'>
-                    <Box direction='row' justify='center' align='center'>
-                      <Box>
-                        <Paragraph>
-                          Only 0.879% of the application is joint application. With the present of the second applicants, the borrowers who have a low grade can get a fairly low interest rate. Having a second applicant or not is a game changer. It creates some "outliers-like” points in some of our EDA plots. In order to simplify the model, we will drop the rows who have second applicants.
-                        </Paragraph>
-                        <Paragraph>
-                          We use two ways of identifying the joint application. First, if the row doesn't have the sec_app_fico_range_low missing, it is an individual application. Second, if the application type is "Joint App", it is a joint application. We will drop whoever identify the more rows.
-                        </Paragraph>
-                      </Box>
-                    </Box>
-                  </AccordionPanel>
-                  <AccordionPanel heading='Drop the columns we no longer need'>
-                    <Box direction='row' justify='center' align='center'>
+                  </Box>
+                </Tab>
+                <Tab title='Second Applicants'>
+                  <Box direction='row' justify='center' align='center'>
+                    <Box>
                       <Paragraph>
-                        application_type and sec_app_fico_range_low were used to identify the loans with second applicants. Since the joint applications have been identified and removed, these two columns are no longer needed.
+                        Only 0.879% of the application is joint application. With the present of the second applicants, the borrowers who have a low grade can get a fairly low interest rate. Having a second applicant or not is a game changer. It creates some "outliers-like” points in some of our EDA plots. In order to simplify the model, we will drop the rows who have second applicants.
+                      </Paragraph>
+                      <Paragraph>
+                        We use two ways of identifying the joint application. First, if the row doesn't have the sec_app_fico_range_low missing, it is an individual application. Second, if the application type is "Joint App", it is a joint application. We will drop whoever identify the more rows.
                       </Paragraph>
                     </Box>
-                  </AccordionPanel>
-                  <AccordionPanel heading='Final columns we have for df_sub'>
-                  </AccordionPanel>
-                </Accordion>
-              </Box>
-            </Tab>
-            <Tab title='Missing Data'>
-              <Box align='center'>
-                <Accordion style={{width: '80vw'}}>
-                  <AccordionPanel heading='Check any missing values in dataframe'>
-                    <Box direction='row' justify='center' align='center'>
+                  </Box>
+                </Tab>
+                <Tab title='Drop Useless Ones'>
+                  <Box direction='row' justify='center' align='center'>
+                    <Paragraph>
+                      application_type and sec_app_fico_range_low were used to identify the loans with second applicants. Since the joint applications have been identified and removed, these two columns are no longer needed.
+                    </Paragraph>
+                  </Box>
+                </Tab>
+              </Tabs>
+            </Box>
+          </Box>
+        </Section>
+
+        <Section
+          direction='row'
+          colorIndex='light-1'
+          justify='center'
+          align='center'
+          wrap={true}
+          style={{minHeight: '800px'}}
+          pad='large'
+        >
+          <Box align='center'>
+            <Heading tag='h1' strong={true}>Handle Missing Data</Heading>
+            <Box full='horizontal'>
+              <Tabs>
+                <Tab title='Initial Check'>
+                  <Box direction='row' justify='center' align='center'>
+                    <Image
+                      src='/image/missing_values.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                    <Paragraph>
+                      Before handling the missing value, we have 1006533 rows. Some columns have way too many missing values, such as mths_since_last_delinq, open_rv_12m and open_rv_24m.
+                    </Paragraph>
+                  </Box>
+                </Tab>
+                <Tab title='Employment Title'>
+                  <Box justify='center' align='center' direction='row'>
+                    <Paragraph>
+                      Column `title` contain way too many types of titles. Almost each loan has a unique title. We can't use it for modeling. However, we later attempted to extract the most common words appeared in column title. More details can be found in feature engineering.
+                    </Paragraph>
+                    <Image
+                      src='/image/emp_title.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                  </Box>
+                </Tab>
+                <Tab title='open_rv_12m, open_rv_24m'>
+                  <Box direction='row' justify='center' align='center'>
+                    <Box>
+                      <Paragraph>
+                        open_rv_12m and open_rv_24m captures the number of revolving trades opened in past 12/24 months.
+                      </Paragraph>
+                      <Paragraph>
+                        They have 724459 missing values. Our best guess is that they are missing at random: these borrowers have zero revolving trades open in the past 12/24 mths. We fill the missing value with 0. We may not use these variables for the model since it has way too many missing values.
+                      </Paragraph>
+                    </Box>
+                  </Box>
+                </Tab>
+                <Tab title='mths_since_last_major_derog, mths_since_last_delinq'>
+                  <Box justify='center' align='center'>
+                    <Paragraph>
+                      Similarly, we expect that mths_since_last_major_derog, mths_since_last_delinq and max_bal_bc have a huge number of missing value because the borrowers do not have that record. We may not use this variable as a predictor for the model. However, it is good to keep them for now for EDA purpose.
+                    </Paragraph>
+                  </Box>
+                </Tab>
+                <Tab title='revol_until'>
+                  <Box justify='center' align='center'>
+                    <Paragraph>
+                      revol_util captures revolving line utilization rate, or the amount of credit the borrower is using relative to. We fill the missing value of revol_until with mean.
+                    </Paragraph>
+                  </Box>
+                </Tab>
+                <Tab title='inq_last_6mths'>
+                  <Box justify='center' align='center'>
+                    <Paragraph>
+                      Column inq_last_6mths only contains 1 missing value, we filled it in with median value.
+                    </Paragraph>
+                    <Box direction='row' align='center'>
                       <Image
-                        src='/image/missing_values.png'
-                        size='large'
-                        style={{width: '45vw'}}
-                        />
-                      <Paragraph>
-                        Before handling the missing value, we have 1006533 rows. Some columns have way too many missing values, such as mths_since_last_delinq, open_rv_12m and open_rv_24m.
-                      </Paragraph>
-                    </Box>
-                  </AccordionPanel>
-                  <AccordionPanel heading='Employment Title'>
-                    <Box justify='center' align='center' direction='row'>
-                      <Paragraph>
-                        Column `title` contain way too many types of titles. Almost each loan has a unique title. We can't use it for modeling. However, we later attempted to extract the most common words appeared in column title. More details can be found in feature engineering.
-                      </Paragraph>
-                      <Image
-                        src='/image/emp_title.png'
-                        size='large'
-                        style={{width: '45vw'}}
-                      />
-                    </Box>
-                  </AccordionPanel>
-                  <AccordionPanel heading='open_rv_12m and open_rv_24m'>
-                    <Box direction='row' justify='center' align='center'>
-                      <Box>
-                        <Paragraph>
-                          open_rv_12m and open_rv_24m captures the number of revolving trades opened in past 12/24 months.
-                        </Paragraph>
-                        <Paragraph>
-                          They have 724459 missing values. Our best guess is that they are missing at random: these borrowers have zero revolving trades open in the past 12/24 mths. We fill the missing value with 0. We may not use these variables for the model since it has way too many missing values.
-                        </Paragraph>
-                      </Box>
-                    </Box>
-                  </AccordionPanel>
-                  <AccordionPanel heading='mths_since_last_major_derog and mths_since_last_delinq'>
-                    <Box justify='center' align='center'>
-                      <Paragraph>
-                        Similarly, we expect that mths_since_last_major_derog, mths_since_last_delinq and max_bal_bc have a huge number of missing value because the borrowers do not have that record. We may not use this variable as a predictor for the model. However, it is good to keep them for now for EDA purpose.
-                      </Paragraph>
-                    </Box>
-                  </AccordionPanel>
-                  <AccordionPanel heading='revol_until'>
-                    <Box justify='center' align='center'>
-                      <Paragraph>
-                        revol_util captures revolving line utilization rate, or the amount of credit the borrower is using relative to. We fill the missing value of revol_until with mean.
-                      </Paragraph>
-                    </Box>
-                  </AccordionPanel>
-                  <AccordionPanel heading='inq_last_6mths'>
-                    <Box justify='center' align='center'>
-                      <Paragraph>
-                        Column inq_last_6mths only contains 1 missing value, we filled it in with median value.
-                      </Paragraph>
-                      <Box direction='row' align='center'>
-                        <Image
-                          src='/image/inq_last_6mths.png'
-                          size='large'
-                          style={{width: '45vw'}}
-                        />
-                        <Paragraph>
-                          Inq_last_6mths has less observations as number of inquiries decreases. According to the plot, we may consider group the number of inquiries into two or three groups if we want to use it as a predictor.
-                        </Paragraph>
-                      </Box>
-                    </Box>
-                  </AccordionPanel>
-                  <AccordionPanel heading='emp_length'>
-                    <Box justify='center' align='center' direction='row'>
-                      <Paragraph>
-                        We don't know the reason that some emp_length is missing. It works the best to fill the NaN by randomly sample the years based on the frequencies of the category. After handling the missing values, the df_sub data frame has 1006533 observations. We didn’t drop a single row during the process of handling the missing value.
-                      </Paragraph>
-                      <Image
-                        src='/image/emp_length.png'
+                        src='/image/inq_last_6mths.png'
                         size='large'
                         style={{width: '45vw'}}
                       />
-                    </Box>
-                  </AccordionPanel>
-                  <AccordionPanel heading='pub_rec_bankruptcies'>
-                    <Box align='center' justify='center' direction='row'>
                       <Paragraph>
-                        pub_rec_bankruptcies has around 600 missing values. 0 is the most common value for pub_rec_bankruptcies, much higher than other categories. Hence, the missing values are filled with 0.
+                        Inq_last_6mths has less observations as number of inquiries decreases. According to the plot, we may consider group the number of inquiries into two or three groups if we want to use it as a predictor.
                       </Paragraph>
-                      <Carousel autoplay={false} infinite={false} style={{width: '45vw'}}>
-                        <Image
-                          src='/image/counterplotpub_rec_bankruptciesBefore.png'
-                          size='large'
-                        />
-                        <Image
-                          src='/image/counterplotpub_rec_bankruptciesAfter.png'
-                          size='large'
-                        />
-                      </Carousel>
                     </Box>
-                  </AccordionPanel>
-                </Accordion>
-              </Box>
-            </Tab>
-          </Tabs>
+                  </Box>
+                </Tab>
+                <Tab title='emp_length'>
+                  <Box justify='center' align='center' direction='row'>
+                    <Paragraph>
+                      We don't know the reason that some emp_length is missing. It works the best to fill the NaN by randomly sample the years based on the frequencies of the category. After handling the missing values, the df_sub data frame has 1006533 observations. We didn’t drop a single row during the process of handling the missing value.
+                    </Paragraph>
+                    <Image
+                      src='/image/emp_length.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                  </Box>
+                </Tab>
+                <Tab title='pub_rec_bankruptcies'>
+                  <Box align='center' justify='center' direction='row'>
+                    <Paragraph>
+                      pub_rec_bankruptcies has around 600 missing values. 0 is the most common value for pub_rec_bankruptcies, much higher than other categories. Hence, the missing values are filled with 0.
+                    </Paragraph>
+                    <Carousel autoplay={false} infinite={false} style={{width: '45vw'}}>
+                      <Image
+                        src='/image/counterplotpub_rec_bankruptciesBefore.png'
+                        size='large'
+                        />
+                      <Image
+                        src='/image/counterplotpub_rec_bankruptciesAfter.png'
+                        size='large'
+                        />
+                    </Carousel>
+                  </Box>
+                </Tab>
+              </Tabs>
+            </Box>
           </Box>
         </Section>
 
         <Section
           direction='column'
           full={true}
-          colorIndex='light-1'
+          colorIndex='light-2'
           justify='center'
           align='center'
           wrap={true}
@@ -483,7 +515,7 @@ class App extends Component {
         <Section
           direction='column'
           full={true}
-          colorIndex='light-2'
+          colorIndex='light-1'
           justify='center'
           align='center'
           wrap={true}
