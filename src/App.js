@@ -530,27 +530,35 @@ class App extends Component {
                 </Box>
               </Tab>
               <Tab title='States'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/states_loan_status_before.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
-                  <LinkNextIcon size='large' />
-                  <Image
-                    src='/image/states_loan_status_after.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
+                <Box direction='column' justify='center' align='center'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Image
+                      src='/image/states_loan_status_before.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                      />
+                    <LinkNextIcon size='large' />
+                    <Image
+                      src='/image/states_loan_status_after.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+                    Address States vs. Number of Loans counter plot for charged off and fully paid loans indicates how locations affects if a borrower’s loan will be charged off or fully paid. Future engineering was conducted on original data to group home ownership into larger categories of other, CA, NY, TX, FL and IL. This was done since these larger categories had most significant number of observations while other states had only few observations. Despite the location of the address states, there are more fully paid loans than charged of loans. Hence address states may have some predictive value in the model.
+                  </Paragraph>
                 </Box>
               </Tab>
               <Tab title='Term'>
-                <Box align='center' direction='row' justify='center'>
+                <Box align='center' direction='column' justify='center'>
                   <Image
                     src='/image/grade_loan_by_term.png'
                     size='large'
                     style={{width: '45vw'}}
                   />
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+                    Grade vs. Number of Loans by Term counter plot for charged off and fully paid loans indicates how borrowers in different grades apply for either 36 month or 60 month loans. This plot shows that borrowers with higher grades (ie: A or B) apply for 36 month loans while borrowers with lower grades (ie: E or F) apply for 60 moth loans.  Although term isn’t a standalone predictor when it comes to determining if a loan will become charged off, it give insight on evaluating performance of the model in the future.
+                  </Paragraph>
                 </Box>
               </Tab>
             </Tabs>
@@ -666,17 +674,37 @@ The ROC curve for our best model, AdaBoost_bal has the expected smooth shape. Th
           <Box align='start'>
             <Heading tag='h1' strong={true}>About Discrimination</Heading>
             <Heading tag='h3'>Why is Discrimination an issue?</Heading>
-            <Paragraph>
-              Although lenders now make good-faith determination in a borrower’s ability to afford a loan, lending discrimination hasn’t been eliminated. Lending discrimination occurs when a lender takes certain protected personal characteristics into account when denying a loan or imposing unfair terms on loans. Preliminary studies have shown that people of color pay higher interest rates than the people identifying themselves in the “white” community. In addition, young borrowers with lower education or women of color receive the highest rates. Although the federal Equal Credit Opportunity Act (ECOA) prohibits lenders from discriminating on the basis of race, religion, sex, age, lending discrimination still remains a challenge to be solved in the marketplace. In addition, unequal treatment of minorities regarding race, gender and age are not just motivated by racism but also lower creditworthiness or other economic disparities.
-            </Paragraph>
-            <Heading tag='h3'>Any Discrimination in Lending Club?</Heading>
-            <Paragraph>
-              Although Lending Club makes investors promise to not violate borrower discrimination laws, it is still an unfair practice.  Even with the limited demographic information, Lending Club provides the first three digits of the borrower’s zipcode which can reveal the geographic location to the investor. They can then make a guess of the distribution of various groups in that location which can give some probability of the borrower’s race. In addition, in 2009 Lending Club’s SEC filings provided investors with information about the borrower’s hometown, current location and a message that might have included phrases like “my husband” or “my wife” in which indirectly disclosed their gender and marital status.
-            </Paragraph>
-            <Heading tag='h3'>Future Work?</Heading>
-            <Paragraph>
-              Our modeling will not directly track discrimination practices by Lending Club, since the analysis is not based on declined loans or any information regarding the borrower’s race, age, or gender. Although Lending Club doesn’t reveal borrower’s race, age, or gender these attributes can be voluntarily reveal through the demographics. For future models, we can investigate locations based on the zip codes and look for potential discriminations by lenders. In addition, we can investigate decline loans and see if there is any connection between them and the locations from where they come from.
-            </Paragraph>
+            <Box direction='row' align='end' justify='center'>
+              <Box pad='medium'>
+                <Paragraph>
+                  Although lenders now make good-faith determination in a borrower’s ability to afford a loan, lending discrimination hasn’t been eliminated. Lending discrimination occurs when a lender takes certain protected personal characteristics into account when denying a loan or imposing unfair terms on loans. Preliminary studies have shown that people of color pay higher interest rates than the people identifying themselves in the “white” community. In addition, young borrowers with lower education or women of color receive the highest rates. Although the federal Equal Credit Opportunity Act (ECOA) prohibits lenders from discriminating on the basis of race, religion, sex, age, lending discrimination still remains a challenge to be solved in the marketplace. In addition, unequal treatment of minorities regarding race, gender and age are not just motivated by racism but also lower creditworthiness or other economic disparities.
+                </Paragraph>
+                <Heading tag='h3'>Any Discrimination in Lending Club?</Heading>
+                <Paragraph>
+                  Although Lending Club makes investors promise to not violate borrower discrimination laws, it is still an unfair practice.  Even with the limited demographic information, Lending Club provides the first three digits of the borrower’s zipcode which can reveal the geographic location to the investor. They can then make a guess of the distribution of various groups in that location which can give some probability of the borrower’s race. In addition, in 2009 Lending Club’s SEC filings provided investors with information about the borrower’s hometown, current location and a message that might have included phrases like “my husband” or “my wife” in which indirectly disclosed their gender and marital status.
+                </Paragraph>
+                <Heading tag='h3'>Future Work?</Heading>
+                <Paragraph>
+                  Our modeling will not directly track discrimination practices by Lending Club, since the analysis is not based on declined loans or any information regarding the borrower’s race, age, or gender. Although Lending Club doesn’t reveal borrower’s race, age, or gender these attributes can be voluntarily reveal through the demographics. For future models, we can investigate locations based on the zip codes and look for potential discriminations by lenders. In addition, we can investigate decline loans and see if there is any connection between them and the locations from where they come from.
+                </Paragraph>
+              </Box>
+              <Box pad='medium'>
+                <Heading tag='h3'>Reference</Heading>
+                <Paragraph>
+                  [1] Lending Club - How to use<br/>
+                  https://www.lendingclub.com/investing/alternative-assets/how-it-works<br/>
+                  <br/>
+                  [2] Lending Club Statistics. LendingClub<br/>
+                  www.lendingclub.com/info/download-data.action.<br/>
+                  <br/>
+                  [3] “Credit & Lending Discrimination and Borrowers' Rights.” Findlaw, Thomson Reuters,<br/>
+                  https://civilrights.findlaw.com/discrimination/credit-lending-discrimination-and-borrowers-rights.html.<br/>
+                  <br/>
+                  [4] “Lenders Can’t Discriminate, but What about Investors?” FT Alphaville, The Financial Times Ltd, <br/>
+                  https://ftalphaville.ft.com/2016/01/13/2150093/lenders-cant-discriminate-but-what-about-investors/.<br/>
+                </Paragraph>
+              </Box>
+            </Box>
           </Box>
         </Section>
       </GrommetApp>
