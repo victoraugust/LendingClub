@@ -237,18 +237,6 @@ class App extends Component {
             <Heading tag='h3'>We handle differently for different predictors.</Heading>
             <Box full='horizontal'>
               <Tabs>
-                <Tab title='Initial Check'>
-                  <Box direction='row' justify='center' align='center'>
-                    <Image
-                      src='/image/missing_values.png'
-                      size='large'
-                      style={{width: '45vw'}}
-                    />
-                    <Paragraph>
-                      Before handling the missing value, we have 1006533 rows. Some columns have way too many missing values, such as mths_since_last_delinq, open_rv_12m and open_rv_24m.
-                    </Paragraph>
-                  </Box>
-                </Tab>
                 <Tab title='Employment Title'>
                   <Box justify='center' align='center' direction='row'>
                     <Paragraph>
