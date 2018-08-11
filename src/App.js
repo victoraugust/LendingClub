@@ -627,12 +627,11 @@ The ROC curve for our best model, AdaBoost_bal has the expected smooth shape. Th
 
         <Section
           direction='row'
-          full={true}
           colorIndex='neutral-1'
           justify='center'
           align='center'
           wrap={true}
-          style={{minHeight: '800px'}}
+          style={{minHeight: '1000px'}}
           pad='large'
         >
           <Box align='start'>
