@@ -175,7 +175,7 @@ class App extends Component {
           <Box align='center'>
             <Heading tag='h1' strong={true}>Variable Selection</Heading>
             <Heading tag='h3'>Choose which predictors to use in our models.</Heading>
-            <Box full='horizontal'>
+            <Box full='horizontal' pad='medium'>
               <Tabs>
                 <Tab title='Initial Selection'>
                   <Box direction='row' justify='center' align='center'>
@@ -234,8 +234,8 @@ class App extends Component {
         >
           <Box align='center'>
             <Heading tag='h1' strong={true}>Missing Data</Heading>
-            <Heading tag='h3'>We handle differently for different predictors.</Heading>
-            <Box full='horizontal'>
+            <Heading tag='h3'>We handled differently for different predictors.</Heading>
+            <Box full='horizontal' pad='medium'>
               <Tabs>
                 <Tab title='Employment Title'>
                   <Box justify='center' align='center' direction='row'>
@@ -333,14 +333,14 @@ class App extends Component {
           justify='center'
           align='center'
           wrap={true}
-          style={{minHeight: '800px'}}
+          style={{minHeight: '1000px'}}
           pad='large'
         >
           <Box align='center'>
             <Heading tag='h1' strong={true}>Exploratory Data Analysis</Heading>
             <Heading tag='h3'>Prepare our data for modeling.</Heading>
           </Box>
-          <Box full='horizontal'>
+          <Box full='horizontal' pad='medium'>
             <Tabs>
               <Tab title='Annual Income'>
                 <Box direction='column' justify='center' align='center'>
@@ -560,7 +560,7 @@ class App extends Component {
           justify='center'
           align='center'
           wrap={true}
-          style={{minHeight: '800px'}}
+          style={{minHeight: '1000px'}}
           pad='large'
         >
           <Box align='center'>
@@ -640,12 +640,21 @@ The ROC curve for our best model, AdaBoost_bal has the expected smooth shape. Th
           style={{minHeight: '800px'}}
           pad='large'
         >
-          <Box>
-            <GrowIcon size='huge' colorIndex='ok' />
-          </Box>
           <Box align='start'>
             <Heading tag='h1' strong={true}>Final Result and thoughts</Heading>
             <Heading tag='h3'>What we learned from this project.</Heading>
+            <Paragraph style={{maxWidth: '800px'}}>
+              Our project goal was to employ the methods of data science in order to create a predictive tool that investors could use to select loans available through the Lending Club platform.  One of the most important factors that any fixed income investor is concerned with is the odds that a borrower will stop paying and renege on loan obligation.  The Lending Club site provides data about such occurrences throughout its history, along with extensive information for all loans and borrowers.  We collected this data, cleaned it and merged it into one file.   Through exploratory data analysis and feature engineering we selected a set of predictors appropriate for modeling.  We used three main principles in feature selection: 1) the features had to be publicly available to investors at the time the loan was made 2) the features had to have enough values to be meaningfully used in the model and 3) the features had to be potentially helpful for separating loans in the Fully Paid class from loans in the Charged Off class.
+<br/>
+During EDA we discovered that many predictors were weak – they did not separate the classes well.  Therefore, our hope was that interesting interactions would be discovered amongst the features during modeling, and that this would lead to good predictions.  We also had to contend with the issue of unbalanced data in the response classes (there were many more Fully Paid loans than Charged Off ones).  The solution that we came up with was to fit some of the models with training sets that had re-balanced classes (via sub-grade stratified under-sampling of the larger class).
+<br/>
+After completing the above steps, we used logistic regression, random forest and boosting classifiers to make predictions for loans in classes C, D, E and F.  Our best model turned out to be AdaBoost trained on the balanced data set.  Its performance on the test set was superior to the trivial model for each sub-grade.  (The trivial model would construct a portfolio of loans by picking them at random.)  If the performance of our best model on the test were to generalize to future predictions, then we contend that it would be of great benefit to investors in improving their loan portfolio performance.  We were careful in evaluating the results of our model to make sure that were not produced by some artifact during training.
+<br/>
+There are several avenues for future work to extend our project and to use the Lending Club data in general.  One interesting issue to consider carefully is whether or not Lending Club changed its grading procedures during its operations, and what impact this might have on predicting charge offs based on past data.  Another exciting area of research would be to delve into the declined loans data, which we did not examine, and to investigate how Lending Club selects loans for its platform.  This kind of project might have less direct application for investors, but it could provide interesting insights into the operations of Lending Club, including whether or not there are any potential instances of discrimination that occur.
+            </Paragraph>
+          </Box>
+          <Box pad='medium'>
+            <GrowIcon size='huge' colorIndex='ok' />
           </Box>
         </Section>
 
