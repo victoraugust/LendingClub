@@ -451,55 +451,75 @@ class App extends Component {
                 </Box>
               </Tab>
               <Tab title='Interest Rate'>
-                <Box align='center' direction='row' justify='center'>
-                  <Carousel autoplay={false} infinite={false} style={{width: '45vw'}}>
+                <Box direction='column' justify='center' align='center'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Carousel autoplay={false} infinite={false} style={{width: '45vw'}}>
+                      <Image
+                        src='/image/sub_grade_interest_rate_outliers.png'
+                        size='large'
+                      />
+                      <Image
+                        src='/image/sub_grade_interest_rate.png'
+                        size='large'
+                      />
+                    </Carousel>
                     <Image
-                      src='/image/sub_grade_interest_rate_outliers.png'
+                      src='/image/year_interest_rate_by_grade.png'
                       size='large'
+                      style={{width: '45vw'}}
                     />
-                    <Image
-                      src='/image/sub_grade_interest_rate.png'
-                      size='large'
-                    />
-                  </Carousel>
-                  <Image
-                    src='/image/year_interest_rate_by_grade.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '900px'}}>
+                    Sub Grade vs. Interest Rate plot indicates how interest rate is differentiated in each subgrade. As the sub grade decreases from A1 to G5, the interest rate increases.  Hence borrowers with a higher ranking grade or subgrade will obtain a lower interest rate. Interest rate may have some predictive value in the model if certain sub grades were more prone to be charged off than fully paid. Note: An interest rate of 0.052 was observed in all subgrades. This interest rate was identified as an outlier and hence removed, even for ones worse than B1. The future engineered plot shows Sub Grade vs. Interest Rate without the outliers. <br/> Year vs. Interest Rate plot indicates how interest rate changes annually. This plot further investigates a possible trend among grades (A to G). This plot shows that overtime the interest rate increases, despite what grade the borrower is ranked as. In addition, this plot re-confirms that borrowers with a higher ranking grade will obtain a lower interest rate while borrowers with a lower ranking grade will obtain a higher interest rate. Hence year may have some predictive value in the model, especially when coupled with interest rate and grade.
+                  </Paragraph>
                 </Box>
               </Tab>
               <Tab title='Loan Purpose'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/loan_purpose_loan_status_before.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
-                  <LinkNextIcon size='large' />
-                  <Image
-                    src='/image/loan_purpose_loan_status_after.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
+                <Box direction='column' justify='center' align='center'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Image
+                      src='/image/loan_purpose_loan_status_before.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                    <LinkNextIcon size='large' />
+                    <Image
+                      src='/image/loan_purpose_loan_status_after.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+                    Loan Purpose vs. Number of Loans counter plot for charged off and fully paid loans indicates how loan purpose affects if a borrower’s loan will be charged off or fully paid. Future engineering was conducted on original data to group loan purpose into larger categories of debit consolidation, credit card, home improvement and other. The future engineering plot shows that there is significant amount of data under each category of loan purpose. In addition, most of the borrowers that participate in Lending Club have a loan purpose of debt consolidation. Despite the loan purpose, there are more fully paid loans than charged of loans. Hence loan purpose may have some predictive value in the model.
+                  </Paragraph>
                 </Box>
               </Tab>
               <Tab title='Payment Ratio'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/payment_ratio_charged_off.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
+                <Box direction='column' justify='center' align='center'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Image
+                      src='/image/payment_ratio_charged_off.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                      />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+                    Payment Ratio on Charged Off Loans plot indicates how much of the total charged off loan is payed to the investor. This plot further investigates a possible trend among grades (A to G). As the grade decreases from A to G, the payment ratio decreases. This plot gives insight to investors how much they can recover if a charge off were to occur. Although payment ratio isn’t a standalone predictor when it comes to determining if a loan will become charged off, it give insight on evaluating performance of the model in the future.
+                  </Paragraph>
                 </Box>
               </Tab>
               <Tab title='Revol Util'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/grade_revol_util_loan_status.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
+                <Box direction='column' justify='center' align='center'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Image
+                      src='/image/grade_revol_util_loan_status.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+                    Grade vs. Revolving Line Utilization Rate (Revol Util) plot for charged off and fully paid loans indicates how Revol Util (or the amount of credit the borrower is using relative to all available revolving credit) affects if a borrower’s loan will be charged off or fully paid. This plot further investigates a possible trend among grades (A to G). Although Grade A shows slightly less revol util than the rest of the grades, there is no significant difference between all the grades when it comes to revol util. However, there is much overlap between the percentile ranges between charged off loans and fully paid off, despite of what grade the borrower belongs in. Hence Revolving Line Utilization Rate by itself may not be as predictive on its own as we hypothesized for the model.
+                  </Paragraph>
                 </Box>
               </Tab>
               <Tab title='States'>
@@ -546,49 +566,52 @@ class App extends Component {
           </Box>
           <Box full='horizontal'>
             <Tabs>
-              <Tab title='Compare'>
-                <Box align='center' direction='row' justify='center'>
-                  <Image
-                    src='/image/predicted_actual_proportion_fully.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
-                  <Image
-                    src='/image/precision_fully.png'
-                    size='large'
-                    style={{width: '45vw'}}
-                  />
+              <Tab title='Proportion'>
+                <Box align='center' justify='center' direction='column'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Image
+                      src='/image/predicted_actual_proportion_fully.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                      />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+                    Here we can see the proportion of Fully Paid loans that is actually present in our data set, compared to what each model predicts. We can see that the model predictions are influenced by the way that instances of Fully Paid and Charged Off classes are distributed in the training data. When trained on the original data, random forest and AdaBoost predict a higher number of Fully Paid loans than is actually there for all sub-grades (this explains the high recall noted earlier). When trained on the class re-balanced data, random forest and AdaBoost predict a lower number of Fully Paid loans than is actually there for all sub-grades. However, given the noisy nature of the data, such results are not unexpected.
+                  </Paragraph>
+                </Box>
+              </Tab>
+              <Tab title='Accuracy'>
+                <Box align='center' justify='center' direction='column'>
+                  <Box align='center' direction='row' justify='center'>
+                    <Image
+                      src='/image/precision_fully.png'
+                      size='large'
+                      style={{width: '45vw'}}
+                    />
+                  </Box>
+                  <Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '900px'}}>
+                    The plot above is very important for evaluating our project. We believe that it is, in fact, the most important evaluation metric from an investor's perspective. The plot shows the precision of each model, by sub-grade, comparing the models to each other and to the trivial model. Here we can see that the random forest and AdaBoost models trained on the original data outperform the baseline model (i.e. picking loans at random from a given subgrade) only slightly. However, models that were trained on a re-balanced dataset have learned to separate Fully Paid and Charged Off loans better. They show significant improvement over the baseline/trivial model for all sub-grades. We can notice some marked outperformance for sub-grades E3 to F3.
+                    <br/>
+                    Our best model turns out to be AdaBoost_bal (AdaBoost trained on a re-balanced dataset). We believe that this model has good potential to help investors pick a higher percentage of winning loans, and to thereby enhance their portfolio return at Lending Club.
+                    <br/>
+                    As an illustrative example, consider sub-grade E3. Historically loans for this sub-grade had a charge off ratio of 40%. When run on the test set, our AdaBoost_bal model had a charge off ratio of about 26% for sub-grade E3. If such model performance were to hold up in the future it would provide a great benefit to an investor, given that loans in sub-grade E3 carry a 25% interest rate in 2018.
+                  </Paragraph>
                 </Box>
               </Tab>
               <Tab title='ROC'>
+                <Box direction='column' align='center' justify='center'>
+                  <Image
+                    src='/image/roc.png'
+                    size='large'
+                    style={{width: '45vw'}}
+                  />
+<Paragraph size='small' style={{borderLeft: '4px solid black', paddingLeft: '10px', maxWidth: '800px'}}>
+The ROC curve for our best model, AdaBoost_bal has the expected smooth shape. The fact that is not more 'bowed out' is another indicator of how challenging of a dataset we had. An AUC of 0.59 sets a benchmark for future modeling.
+</Paragraph>
+                </Box>
               </Tab>
               <Tab title='Feature Importance'>
-                <Box direction='column' align='center' justify='center'>
-                  <Box>
-                    <Table scrollable={true}>
-                    <thead>
-                      <tr>
-                        <th>
-                          Feature
-                        </th>
-                        <th>
-                          Importance
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <TableRow>
-                        <td>
-                          Alan
-                        </td>
-                        <td className='secondary'>
-                          plays accordion
-                        </td>
-                      </TableRow>
-                    </tbody>
-                  </Table>
-                  </Box>
-                </Box>
+
               </Tab>
             </Tabs>
           </Box>
